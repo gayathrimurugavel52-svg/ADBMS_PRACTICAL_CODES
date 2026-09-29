@@ -1,0 +1,2 @@
+DELETE FROM Student
+WHERE ID = 1;
