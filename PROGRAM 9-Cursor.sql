@@ -1,27 +1,42 @@
-DECLARE
-    CURSOR STUDENT_CURSOR IS
-        SELECT ID, NAME, MARK FROM STUDENT;
+CREATE TABLE Employee (
+    emp_id NUMBER PRIMARY KEY,
+    emp_name VARCHAR2(50),
+    salary NUMBER);
 
-    V_ID STUDENT.ID%TYPE;
-    V_NAME STUDENT.NAME%TYPE;
-    V_MARK STUDENT.MARK%TYPE;
+INSERT INTO Employee VALUES (101, 'Rahul', 30000);
+INSERT INTO Employee VALUES (102, 'Priya', 35000);
+INSERT INTO Employee VALUES (103, 'Arun', 40000);
+
+COMMIT;
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    CURSOR emp_cursor IS
+        SELECT emp_id, emp_name, salary
+        FROM Employee;
+
+    v_emp_id Employee.emp_id%TYPE;
+    v_emp_name Employee.emp_name%TYPE;
+    v_salary Employee.salary%TYPE;
 
 BEGIN
-    OPEN STUDENT_CURSOR;
+    OPEN emp_cursor;
 
     LOOP
-        FETCH STUDENT_CURSOR INTO V_ID, V_NAME, V_MARK;
+        FETCH emp_cursor INTO v_emp_id, v_emp_name, v_salary;
 
-        EXIT WHEN STUDENT_CURSOR%NOTFOUND;
+        EXIT WHEN emp_cursor%NOTFOUND;
 
         DBMS_OUTPUT.PUT_LINE(
-            'ID: ' || V_ID ||
-            '  NAME: ' || V_NAME ||
-            '  MARK: ' || V_MARK
+            'ID: ' || v_emp_id ||
+            '  Name: ' || v_emp_name ||
+            '  Salary: ' || v_salary
         );
     END LOOP;
 
-    CLOSE STUDENT_CURSOR;
+    CLOSE emp_cursor;
 END;
 /
+
 
