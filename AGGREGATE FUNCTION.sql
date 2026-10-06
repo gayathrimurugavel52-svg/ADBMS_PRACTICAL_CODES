@@ -1,14 +1,8 @@
--- Create Employee table
-
 CREATE TABLE Employee (
     emp_id NUMBER PRIMARY KEY,
     emp_name VARCHAR2(50),
     department VARCHAR2(50),
-    salary NUMBER(10,2)
-);
-
-
--- Insert records
+    salary NUMBER(10,2));
 
 INSERT INTO Employee VALUES (101, 'Rahul', 'Computer Science', 30000);
 INSERT INTO Employee VALUES (102, 'Priya', 'Computer Science', 35000);
@@ -18,43 +12,30 @@ INSERT INTO Employee VALUES (105, 'Anitha', 'Electronics', 38000);
 
 COMMIT;
 
-
--- 1. COUNT()
--- Counts the total number of employees
+ COUNT()
 
 SELECT COUNT(*) AS total_employees
 FROM Employee;
 
-
--- 2. SUM()
--- Calculates the total salary
+SUM()
 
 SELECT SUM(salary) AS total_salary
 FROM Employee;
 
-
--- 3. AVG()
--- Calculates the average salary
+AVG()
 
 SELECT AVG(salary) AS average_salary
 FROM Employee;
 
-
--- 4. MAX()
--- Finds the highest salary
+MAX()
 
 SELECT MAX(salary) AS highest_salary
 FROM Employee;
 
-
--- 5. MIN()
--- Finds the lowest salary
+MIN()
 
 SELECT MIN(salary) AS lowest_salary
 FROM Employee;
-
-
--- 6. Using all aggregate functions together
 
 SELECT
     COUNT(*) AS total_employees,
@@ -63,9 +44,6 @@ SELECT
     MAX(salary) AS highest_salary,
     MIN(salary) AS lowest_salary
 FROM Employee;
-
-
--- 7. Aggregate functions with GROUP BY
 
 SELECT
     department,
@@ -76,9 +54,6 @@ SELECT
     MIN(salary) AS lowest_salary
 FROM Employee
 GROUP BY department;
-
-
--- 8. Aggregate functions with HAVING
 
 SELECT
     department,
