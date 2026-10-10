@@ -1,1 +1,2 @@
-RENAME TABLE Student TO Student_Details;
+RENAME 
+  TABLE Student TO Student_Details;
